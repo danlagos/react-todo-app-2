@@ -1,3 +1,14 @@
+class Todo extends React.Component {
+  render(){
+    return <div className="todo">
+              <span>
+                <input type="checkbox" /> {this.props.name}
+              </span>
+            </div>
+  }
+}
+
+
 ReactDOM.render(
-  <h1>Hello, World</h1>,
+  <Todo name="Todo 1" />,
   document.getElementById('root'));
