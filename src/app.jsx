@@ -1,8 +1,13 @@
 class Todo extends React.Component {
   render(){
+
+    let checked = (this.props.done =="true");
+    
+
     return <div className="todo">
               <span>
-                <input type="checkbox" /> {this.props.name}
+                <input type="checkbox" checked={checked} /> 
+                <input type="text" value={this.props.text} />
               </span>
             </div>
   }
@@ -10,5 +15,5 @@ class Todo extends React.Component {
 
 
 ReactDOM.render(
-  <Todo name="Todo 1" />,
+  <Todo text="Todo 1" done="false"/>,
   document.getElementById('root'));
