@@ -3,7 +3,7 @@ class Todo extends React.Component {
 constructor(props){
   super(props);
 
-  this.state = { done: (this.props.done == "true" && props.done),
+  this.state = { done: props.done,
                   text: props.text 
                 };
 
@@ -52,6 +52,47 @@ constructor(props){
   }
 }
 
+class TodoList extends React.Component {
+  constructor(props){
+    super(props);
+
+    this.state = { todos:[
+                            {
+                              _id: 'a',
+                              text: 'Item 1',
+                              done: false
+                            },
+                            {
+                              _id: 'b',
+                              text: 'Item 2',
+                              done: true
+                            },
+                            {
+                              _id: 'c',
+                              text: 'Item 3',
+                              done: false
+                            },
+                            {
+                              _id: 'd',
+                              text: 'Item 4',
+                              done: false
+                            }
+                          ]
+                  };
+  } 
+
+  render(){
+    const todoList = this.state.todos.map((todo) => 
+      <Todo key={ todo._id.toString() } text={ todo.text } done={ todo.done } />
+    );
+
+    return <React.Fragment>
+            <h1>React Todo App</h1>
+            {todoList}
+           </React.Fragment>
+  }
+}
+
 ReactDOM.render(
-  <Todo text="Todo 1" done="true"/>,
+  <TodoList />,
   document.getElementById('root'));
